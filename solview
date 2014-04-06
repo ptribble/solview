@@ -1,0 +1,102 @@
+#!/bin/sh
+#
+# run solview
+#
+
+SVDIR=`dirname $0`
+LIBDIR=${SVDIR}/lib
+ARCHLIBDIR=${LIBDIR}/`/usr/bin/uname -p`
+ARCHLIBDIR_32=${LIBDIR}/`/usr/bin/uname -p`
+ARCHLIBDIR_64=${LIBDIR}/`/usr/bin/isainfo -k`
+ARCHLIBDIR="${ARCHLIBDIR_32}"
+JARLIBDIR=${LIBDIR}/java
+JAVA=java
+
+#
+# if installed then the locations change
+#
+INSTALLED=false
+if [ "$INSTALLED" = "true" ]; then
+    ARCHLIBDIR=/usr/lib
+    ARCHLIBDIR_64=/usr/lib/64
+    JARLIBDIR=/usr/share/solview
+fi
+
+#
+# attempt to use a 64-bit version if possible
+#
+if [ -f "${ARCHLIBDIR_64}/libproc_jni.so" ]; then
+    if [ "${ARCHLIBDIR}" != "${ARCHLIBDIR_64}" ]; then
+	ARCHLIBDIR="${ARCHLIBDIR_64}"
+	JFLAGS="-d64"
+    fi
+fi
+
+#
+# need to give java more memory to handle contents file parsing
+#
+case $# in
+0)
+	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -jar ${JARLIBDIR}/solview.jar
+	exit 0
+	;;
+esac
+
+SVJAR=${JARLIBDIR}/solview.jar
+JCJAR=${JARLIBDIR}/jcommon-1.0.21.jar
+JFJAR=${JARLIBDIR}/jfreechart-1.0.17.jar
+JINGLEJAR=${JARLIBDIR}/jingle.jar
+JUMBLEJAR=${JARLIBDIR}/jumble.jar
+JKJAR=${JARLIBDIR}/jkstat.jar
+JPJAR=${JARLIBDIR}/jproc.jar
+
+BASEJARS=${SVJAR}:${JINGLEJAR}:${JUMBLEJAR}
+ALLJARS=${JCJAR}:${JFJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JKJAR}:${JPJAR}
+
+case $1 in
+
+services)
+	shift
+	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -cp ${BASEJARS} uk.co.petertribble.solview.MultiView services
+	exit 0
+	;;
+
+explorer)
+	shift
+	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -cp ${SVJAR}:${ALLJARS} uk.co.petertribble.solview.MultiView explorer
+	exit 0
+	;;
+
+information)
+	shift
+	$JAVA -cp ${BASEJARS} uk.co.petertribble.solview.MultiView information
+	exit 0
+	;;
+
+cpustate)
+    LD_LIBRARY_PATH=${ARCHLIBDIR_32} $JAVA -cp ${SVJAR}:${ALLJARS} uk.co.petertribble.solview.explorer.JCpuState $*
+    exit 0
+    ;;
+
+fsstat)
+    LD_LIBRARY_PATH=${ARCHLIBDIR_32} $JAVA -cp ${SVJAR}:${ALLJARS} uk.co.petertribble.solview.explorer.JFSstat
+    exit 0
+    ;;
+
+arcstat)
+    LD_LIBRARY_PATH=${ARCHLIBDIR_32} $JAVA -cp ${SVJAR}:${ALLJARS} uk.co.petertribble.solview.explorer.ArcStat
+    exit 0
+    ;;
+
+esac
+
+cat <<EOF
+Usage: $0 [subcommand]
+  Available subcommands:
+services - show SMF services
+explorer - show system explorer view
+information - show system information
+cpustate [ chart | vertical ] - show the enhanced jcpustate demo
+fsstat - show the jfsstat demo
+arcstat - display zfs arc statistics
+EOF

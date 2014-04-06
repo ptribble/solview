@@ -1,0 +1,13 @@
+Solaris zones confuse solview somewhat:
+
+Of the informational commands, prtconf, prtpicl, and prtdiag don't
+work; share is meaningless; there's no local routing; it's pointless
+giving a zone list.
+
+
+Solaris bug:
+
+Yes Peter? routeadm
+routeadm: failed to open /etc/inet/routing.conf: Permission denied
+
+(there's no such file...)

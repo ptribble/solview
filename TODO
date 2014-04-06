@@ -1,0 +1,39 @@
+Things To Do:
+
+Faulty zfs pools should be marked in red
+
+The tree cell renderers don't actually do tooltips
+
+Solaris 11 port (whatever information needs to be different)
+
+Nothing actually calls SysItem.setStatus()
+
+Update arcstat
+
+top: jkstat + jproc; graphical charts and sparks for summaries; add
+zone/user/whatever aggregation
+
+ZFS: need to display snapshots
+
+Handle metadevices used for swap.
+
+Should Mnttab be singleton?
+Would make it easier to query from any context without having to
+pass around.
+
+Mnttab should update itself to allow for mount and unmount activity
+
+Can we save historical kstat data so that the charts don't start blank
+each time?
+
+threaded cores and individual threads should show their fragment of the
+psrinfo output
+
+threads and cores should say what their parent is
+
+Possible bug: seen a NoSuchElementException parsing Mnttab
+
+Localize explorer
+
+In services view, parent nodes should inherit the status of their
+children (done, needs checking more widely)

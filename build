@@ -1,0 +1,88 @@
+#!/bin/sh
+#
+# build solview
+#
+
+SVDIR=`dirname $0`
+LIBDIR=${SVDIR}/lib
+JARLIBDIR=${LIBDIR}/java
+JAVA=java
+
+XFLAGS="-Xlint -Xlint:-serial"
+
+
+SVJAR=${JARLIBDIR}/solview.jar
+JCJAR=${JARLIBDIR}/jcommon-1.0.21.jar
+JFJAR=${JARLIBDIR}/jfreechart-1.0.17.jar
+JINGLEJAR=${JARLIBDIR}/jingle.jar
+JUMBLEJAR=${JARLIBDIR}/jumble.jar
+JKJAR=${JARLIBDIR}/jkstat.jar
+JPJAR=${JARLIBDIR}/jproc.jar
+
+BUILDJARS=${JINGLEJAR}:${JUMBLEJAR}:${JKJAR}:${JPJAR}
+
+PATH=/usr/jdk/instances/jdk1.6.0/bin:$PATH
+export PATH
+
+#
+# run
+# ./build pmd
+# to use this, these checks should always pass, it's a regression if
+# any warnings appear. Of course, you must have pmd in your path
+#
+PMDCHECKS="imports,typeresolution,coupling,clone,finalizers,sunsecure,unusedcode,migrating,strictexception,braces"
+
+case $# in
+0)
+	if [ -x /opt/onbld/bin/jstyle ]; then
+	    /opt/onbld/bin/jstyle `find uk/co/petertribble -name '*.java'`
+	fi
+	javac ${XFLAGS} -classpath .:${BUILDJARS} `find uk/co/petertribble -name '*.java'`
+	jar -cmf solview.manifest ${SVJAR} images/*.png pixmaps/* properties/*.properties help/*.html help/CDDL.txt `find uk/co -name '*.class'`
+	cp ${SVJAR} jsp/WEB-INF/lib
+	cp ${JUMBLEJAR} jsp/WEB-INF/lib
+	cd jsp
+	jar cf ../solview.war *
+	cd ..
+	rm jsp/WEB-INF/lib/jumble.jar
+	rm jsp/WEB-INF/lib/solview.jar
+	exit 0
+	;;
+esac
+
+case $1 in
+
+doc|-doc)
+	rm -fr javadoc
+	mkdir javadoc
+	javadoc -d javadoc uk.co.petertribble.solview uk.co.petertribble.solview.helpers uk.co.petertribble.solview.explorer
+	;;
+
+clean|-clean)
+	rm -f `find uk/co/petertribble -name '*.class'`
+	rm -f `find . -type f -name '*~'`
+	rm -fr javadoc
+	;;
+
+pmd|-pmd)
+	pmd uk $PMDCHECKS
+	exit 0
+	;;
+
+packages)
+	cat solview | sed s:INSTALLED=false:INSTALLED=true: > solview.installed
+	./mkproto i386 $2 > prototype.i386
+	./mkproto sparc $2 > prototype.sparc
+	pkgmk -d /tmp -f prototype.i386 -r `pwd` TRIBsolview
+	pkgtrans -s /tmp /tmp/TRIBsolview-i386.pkg TRIBsolview
+	rm -fr /tmp/TRIBsolview
+	pkgmk -d /tmp -f prototype.sparc -r `pwd` TRIBsolview
+	pkgtrans -s /tmp /tmp/TRIBsolview-sparc.pkg TRIBsolview
+	rm -fr /tmp/TRIBsolview
+	ls -l /tmp/TRIBsolview-sparc.pkg /tmp/TRIBsolview-i386.pkg
+	rm prototype.i386 prototype.sparc
+	rm solview.installed
+	rm -f depend
+	exit 0
+	;;
+esac

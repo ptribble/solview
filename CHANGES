@@ -1,0 +1,636 @@
+From 1.0 to 1.1
+
+Add application icons
+
+Add desktop file
+
+Update jkstat to 1.1
+
+Update jfreechart to 1.0.17
+
+NOTE: As a result, Java 6 or later is now required
+
+Version 1.0
+
+NOTE: Post version 1.0, new features will appear in v2.0 and later
+which will require a minimum Java 7
+
+Update jkstat to 1.0
+
+Update jproc to 1.0
+
+Version 0.63
+
+Update license details
+
+Update jkstat to 0.69, jproc to 0.12
+
+Reimplement fsstat using ChartableKstat
+
+Version 0.62
+
+Update jkstat to 0.67
+
+Add IOstatTable
+
+Update jproc to 0.11
+
+Version 0.61
+
+Disk display shows number of disks and iostat -En output
+
+Update jkstat, jingle
+
+Refactor NetInfoPanel, SummaryPanel
+
+Remove instances from SysItem
+
+ToolTips in informational panel show the command that would be used.
+
+SmfService constructor loses start time
+
+InfoPanel gains addText() which is used for all text display
+
+Add netstat output to explorer
+
+javadoc essentially complete
+
+Version 0.60
+
+Removed pkgview, which is now distributed separately.
+
+Removed deprecated subcommands
+
+Version 0.59
+
+Update jkstat to 0.63
+
+Update to latest jfreechart
+
+Update jproc to 0.9
+
+Version 0.58
+
+Remove unnecessary try/catch boilerplate from SwingWorker invocations
+
+Update jkstat to 0.61
+
+Fix jfsstat for jkstat 0.60
+
+Update fsstat to leverage KstatSet
+
+Update jproc to 0.8
+
+New packagesizes subcommand, list files by installed size and number of
+files. The clustersizes and metaclustersizes subcommands now also show
+the number of files they contain.
+
+Move revDeps out of PkgList
+
+Improve jumpstart profile checking
+
+Tidy up ClusterTree invocation and ClusterTreeCellRenderer
+
+Filesystem package view shows the pathname when it should
+
+SmfService gains getContract()
+
+In the services view, service dependencies are a separate tab
+
+In the services view, the logfile is loaded lazily on demand, as it can
+be quite slow.
+
+Services view uses jproc to show a table of process activity for those
+processes in the given service contract
+
+Java 7 compatibility: don't instantiate SolViewResources, PkgResources
+
+Java 7 compatibility: fix getColumnClass()
+
+Version 0.57
+
+Update jkstat to 0.52
+
+Added the json jar file
+
+Tooltips for sparkline charts
+
+AggregateCpuPanel supports vertical orientation
+
+Tidy up InfoCommandList
+
+More javadoc
+
+Made the jsp pages work again, and minor embellishments
+
+Handle alternate device entries
+
+Show if a device is mounted
+
+Show if a device is part of a metadevice
+
+Show if a device contains a metadevice database
+
+'solview cpustate vertical'
+
+Version 0.56
+
+Remove unnecessary static initialization blocks
+
+Add pmd checks migrating,strictexception,braces
+
+Cut out unnecessary setLayout() calls
+
+Clean up popup menus
+
+Clean up InfoPanel
+
+Update jkstat to 0.43
+
+Update jproc to 0.6
+
+localprofile can derived installed geographical regions
+
+update jumble
+
+Add getKstat() to SysItem, don't pass Kstats as attributes
+
+SVMconfig a singleton
+
+ZFSconfig a singleton
+
+Clean up JCpuInfo, ProcessorTree
+
+Clean up DiskInfoPanel
+
+Clean up DevicePath
+
+ProcessorTree and psrinfo subcommand moved back to jkstat
+
+kmemalloc moved back to jkstat
+
+Update jkstat to 0.44
+
+cpu charts have the same colors as cpustate accessory
+
+Explorer view: removed containing tabbed panes
+
+Explorer: summary view at start, and if you select the root node
+
+Explorer titles are more useful
+
+cpustate actually gets its arguments passed to it
+
+This cpustate can do charts, just like the one in jkstat
+
+Zpool config parsed to find its components
+
+Report if a disk or partition is used by a zfs pool
+
+CDDL block everywhere
+
+Version 0.55
+
+Update jkstat to 0.42
+
+JCpuState extends JKdemo, and has other nits cleaned up; related
+cleanups in ProcessorTree and AggregateCpuPanel
+
+Removed unused variables, from pmd unusedcode
+
+Refactor shared code from JCpuInfo and CpuInfoPanel into ProcessorTree
+
+kmemalloc now shows historical average at start, rather than zeros.
+
+Jumpstart profile builder has an extra tab, allowing selection of
+geographic region.
+
+Clean up jfsstat
+
+Modernize code in Mnttab, DevicePath
+
+ZFS ARC panel not shown if we have no pools configured.
+
+Updated jumble to 1.3
+
+Version 0.54
+
+Incorporate JProc 0.5, fixing a massive file descriptor leak
+
+Clean up process view a little, now that the jproc process table can
+remove columns
+
+Version 0.53
+
+Updated jingle and jumble.
+
+Update jkstat to 0.41, add jstripchart
+
+Simplify sorting in JKmemAlloc
+
+Simplify sorting of disk partitions
+
+Disks are sorted
+
+Network interfaces sorted
+
+Tidy up ProfileBuilder
+
+Cluster and packages in a generated jumpstart profile are sorted
+
+New localprofile subcommand generates a jumpstart profile that will
+(approximately) match the current system
+
+New missingpackages subcommand will report on missing packages that
+should be installed to meet other packages dependencies
+
+Automatically show and update profile when you switch to the profile
+display tab
+
+In the jumpstart builder, clusters get properly selected or unselected
+if all their members get selected or unselected
+
+In the jumpstart builder, checkboxes in the tree get updated instantly
+when you customize a selection, rather than sometime later; and for the
+package list
+
+InstalledCluster now static
+
+Removed option where solview shows a distribution media if supplied as
+extra arguments: if you need to look at distribution media, then use
+the jumpstart profile builder
+
+Separate Installed and Distribution versions of Cluster and Package
+panels merged
+
+Use of PackageInformationPanel simplified
+
+In RunInXterm, find where xterm lives
+
+Sort psrinfo
+
+Sort enhanced jcpustate
+
+Sort services in jsp view
+
+psrinfo -p now returns the correct answer, and psrinfo -vp is more
+efficient
+
+fsstat help fixed, and menu mnemonics added
+
+implemented reset in jumpstart profile builder
+
+Version 0.52
+
+Tidy nits in call to KstatToolsMenu
+
+Simplify SmfPanel
+
+Simplify InfoPanel
+
+Individual views reimplemented as subcommands of a common MultiView
+class
+
+Clean up RunCommand
+
+Spring clean in pkgview
+
+Patch readme displayed correctly (in those cases where it's displayed
+at all).
+
+Remove PatchComparator, implement Comparable instead, and for packages
+and clusters so everything sorts.
+
+Profile builder now allows recursive removal
+
+Profile parser does a better job of finding the distrubution directory
+
+Version 0.51
+
+Update jkstat to 0.39
+
+Explorer: handle zfs pools; snapshots handled separately
+
+separate build script
+
+Fix 32/64 bit mismatch for jkstat demos
+
+pmd option for build
+
+remove PackageToc
+
+jcpustate refactoring
+
+arcstatpanel refactoring
+
+Version 0.50
+
+Update jproc to 0.4 and jkstat to 0.37
+
+Runs in 64-bit if it can and if necessary
+
+Refactoring around PackageInformationPanel
+
+Version 0.49
+
+Cpus: need to sort threads
+
+Prettify cpu accessory
+
+Disk partitions in explorer view should be sorted alphabetically
+
+pmd cleanups
+
+Updated jkstat to 0.36
+
+Updated swingworker to 1.2
+
+Metadevices are shown as a tree
+
+fsstat demo gets filtering
+
+arcstat demo prettified, redundant code removed, missing help page
+restored
+
+Clean up SolarisPatch
+
+Array loops generified
+
+Filesystem view of software cleaned up.
+
+ClusterTree refactored
+
+html generation refactored
+
+profile builder output doesn't wrap by mistake
+
+Find the Product directory on our own - just point the profile builder
+or solview at the root of the cd or jumpstart install image
+
+Tree view is default when viewing a distribution
+
+Processor view shows mpstat
+
+Mnttab maps device names to filesystems
+
+New DevicePath class maps driver instances (sd#) to disk names
+(c#t#d#s#).
+
+Explorer now maps instances (sd#) to disk names (c#t#d#s#), metadevices
+to mountpoints, and generally tries to join the dots.
+
+Updated kmemalloc demo to use new KstatAccessorySet
+
+Fixed cpustate demo so it finds its resources
+
+Version 0.48
+
+Fixed solview so that the process view works (it worked in the
+standalone explorer view, but not when called as part of solview)
+
+Fixed the war file so that the services view works again
+
+Version 0.47
+
+Updated jkstat to 0.30
+
+Updated jfreechart
+
+SMF services much better at getting legacy script filenames
+
+Explorer output tabular where it makes sense
+
+Merged ContentsCluster into ContentsPackage
+
+ContentsFileDetail fields now private and use accessors
+
+Lots of minor weeding
+
+FsstatTable Model doesn't fireTableStructureChanged when it shouldn't,
+and doesn't implement isCellEditable()
+
+Top of the explorer tree is the system name, not "Hardware"
+
+Rely on default value initialization
+
+Updated jkstat to 0.31
+
+In solview, the tool and demos menus now have keyboard mnemonics.
+
+Views have their own help
+
+Incorporates jproc, version 0.2, for process support
+
+Process entry in explorer view
+
+Aggregate cpustate widgets
+
+CPU charts; network charts
+
+Version 0.46
+
+SMF services now colour-coded
+
+SMF service code much cleaned up
+
+keyboard navigation in lists
+
+Version 0.45
+
+This list of changes now the right way up...
+
+No more Hashtable; No more Enumeration
+
+Added the solview system explorer - try 'solview explorer'.
+
+Removed the distribution size code; I couldn't remember how it worked
+anyway
+
+Updated jkstat to 0.25
+
+Can now parse and validate jumpstart profiles
+
+More tidying courtesy of PMD
+
+demos moved here from JKstat: jkmemalloc, jcpustate, psrinfo, arcstat
+
+More informational commands
+
+A few nits found by findbugs
+
+Version 0.44
+
+The jsp interface works again. It's obviously well tested, because it's
+been broken for a while.
+
+Extra informational commands: pkginfo, smbios, zpool, nscd
+
+The individual panels of solview can now be launched in isolation. Try
+'solview services', 'solview information', 'solview software'.
+
+General code gardening - unused imports etc. Both manually and using
+PMD.
+
+Updated jkstat to 0.23.
+
+Updated jfreechart.
+
+Version 0.43
+
+Services panel gives access to the SMF logfiles in /var/svc/log
+(if they exist)
+
+Latest jkstat (0.21) and dependencies.
+
+Clean up for Indiana, which only has partial SVR4 package information.
+
+Tree view of SMF services
+
+Version 0.42
+
+Profile Builder cleanup
+ - Remove selection debug output
+ - The add/remove button doesn't update when moving to a selected cluster
+ - In the customize tab, show which clusters our dependencies are in
+ - If we add then delete, the delete still appears in the jumpstart profile.
+ - Get customize tab to reflect selection changes straight away
+ - PackageInormationPanel should force customize to the right always
+ - Create a (sorted) package list as well as a profile.
+ - Rename mayBeUnselected to mustBeSelected
+ - package lists can be collapsed into clusters
+ - display partially mandatory clusters
+ - more icons for partially mandatory clusters
+ - enable save
+
+MetaCluster now has includesPackage()
+
+Mustn't remove a cluster containing mandatory packages (SUNWCced is an
+example); in this case we just remove the packages we can.
+
+Updated Jumble
+
+Remove unused PackageJList
+
+Version 0.41
+
+Tree view of clusters shows graphically by means of a custom icon if a
+package is installed or not, or if a cluster is fully, partially, or
+not installed. When looking at a distribution in the profile builder,
+read selected for installed.
+
+Packages and Clusters can be marked as forcibly selected.
+
+Use SUNWCmreq to mark packages and clusters that must be selected.
+
+Display forcibly selected packages and clusters using forced.png
+
+Clusters need to have list of dependants
+
+Packages need to know their dependants
+
+Show cluster dependants
+
+PkgList - dependencies keyed by package object not package name
+
+The dependant sets should be sets of packages not of strings
+
+Removed use of Vector from pkgview
+
+Add forced selection to package list
+
+Jumpstart profile builder vaguely works
+
+Version 0.40
+
+Updated jingle to localized version
+
+Strings extracted into Resource Bundles
+
+Updated jkstat to 0.20, and jfreechart
+
+Handle missing clustertoc (so it should work in zones)
+
+Version 0.39
+
+Integrated jkstat, so you can launch the jkstat demos from solview
+
+Restructured the file layout, especially the lib subdirectory.
+
+Added ClusterSizes and MetaClusterSizes, to show breakdown of the sizes
+of clusters and metaclusters. They only look at the contents file, so
+will only show data on what's installed - which means you really need
+to have installed SUNWCXall for them to show the full picture.
+
+Added sizes for clusters and metaclusters on a distribution. This is
+slightly different to the above, and currently needs a helper file with
+the compressed archive sizes.
+
+Distribution layout now looks like the installed view, so is much
+nicer.
+
+Version 0.38
+
+PackageInformationPanel more customizable, has separate Files tab
+
+Start on packagetoc parser
+
+SolarisPackage is richer, for packagetoc and jpack support
+
+Added PatchComparator to sort patches
+
+Added display of patches
+
+Version 0.37
+
+Methods to access pkginfo data
+
+Refactoring of gui. 
+
+Common PackageInformationPanel
+
+Separate classes for package, file, and cluster views
+
+Installed package view now a table like JPack does
+
+Updated jingle.jar
+
+Reverse dependency check and contents parsing now done in a SwingWorker
+
+Version 0.36
+
+Started on ProfileBuilder (but didn't get very far)
+
+Clustertoc now read DESC descriptions, and PackageCluster and
+MetaCluster store this information
+
+Updated jingle.jar
+
+Dependency menu option disabled after you run it, to avoid running it
+more than once.
+
+Added contents file parser back in.
+
+Details added to package info
+
+solview window a little bigger
+
+Cluster installedStatus now an int, with another method for the textual
+version.
+
+Details added to cluster info
+
+The solview command needs to allocate more memory to the JVM so that
+contents file parsing can succeed.
+
+Cleaned up PkgList - PackageJList is the JList representation of it, so
+PkgList has no GUI code.
+
+Removed Vector from pkgview
+
+Version 0.35
+
+Code jstyle clean
+Replace StringBuffer by StringBuilder
+Converted to Generics
+Restructured to use Packages and Clusters properly
+Lint clean

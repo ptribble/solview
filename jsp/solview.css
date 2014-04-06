@@ -1,0 +1,42 @@
+h1 {
+	font-family: lucida-sans, verdana, arial, 'sans serif';
+	color: #8b4513;
+        margin:  4px 12px 3px 12px;
+	background-color: #fec;
+	text-align: center;
+        border-bottom: 2px solid #900;
+	align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
+body {
+	background-color: #fff;
+}
+
+hr {
+	color: #8b4513;
+}
+
+table.header {
+	background-color: #rdb;
+}
+
+th {
+	background-color: #fec;
+	font-family: lucida-sans, verdana, arial, 'sans serif';
+}
+
+td {
+	font-family: lucida-sans, verdana, arial, 'sans serif';
+}
+
+p {
+	font-family: lucida-sans, verdana, arial, 'sans serif';
+}
+
+.summary {
+	background-color: #b8ddff;
+}
