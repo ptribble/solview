@@ -44,7 +44,7 @@ public class InfoPanel extends JPanel {
 	setLayout(new BorderLayout());
 	iclist = new InfoCommandList();
 
-	JList ilist = new InfoJList(iclist);
+	JList <InfoCommand> ilist = new InfoJList(iclist);
 	ilist.addMouseListener(mouseListener);
 	ilist.addKeyListener(keyListener);
 

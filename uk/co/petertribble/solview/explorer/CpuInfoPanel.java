@@ -121,6 +121,11 @@ public class CpuInfoPanel extends InfoPanel {
     }
 
     /*
+     * Note on types: See SysTree.java, where the "core" and "chip"
+     * attributes are Long, whereas the "thread" is an int.
+     */
+
+    /*
      * A processor chip.
      */
     private void displayChip() {
@@ -138,8 +143,8 @@ public class CpuInfoPanel extends InfoPanel {
      * A processor core.
      */
     private void displayCore() {
-	Long l = (Long) hi.getAttribute("core");
-	jvp.add(new JLabel("Details of processor core " + l));
+	jvp.add(new JLabel("Details of processor core "
+		+ hi.getAttribute("core")));
 	if (proctree.isThreaded()) {
 	    // FIXME psrinfo fragment here
 	    addCoreAccessory();
@@ -153,8 +158,8 @@ public class CpuInfoPanel extends InfoPanel {
      * A processor thread.
      */
     private void displayThread() {
-	Long l = (Long) hi.getAttribute("thread");
-	jvp.add(new JLabel("Details of processor thread " + l));
+	jvp.add(new JLabel("Details of processor thread "
+		+ hi.getAttribute("thread")));
 	// FIXME psrinfo fragment here
 	addAccessory();
     }

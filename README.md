@@ -18,7 +18,7 @@ Licensing
 =========
 
 SolView is licensed under CDDL, just like the bulk of OpenSolaris - see
-the file CDDL.txt
+the file LICENSE
 
 SolView incorporates JFreeChart, (C)opyright 2000-2011 by Object
 Refinery Limited and Contributors. JFreeChart is covered by the LGPL -

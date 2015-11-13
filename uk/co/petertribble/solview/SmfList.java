@@ -30,7 +30,7 @@ import javax.swing.DefaultListModel;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfList extends JList {
+public class SmfList extends JList <SmfService> {
 
     /**
      * Display a list of SMF services.
@@ -38,7 +38,7 @@ public class SmfList extends JList {
      * @param smfutil An SmfUtils object
      */
     public SmfList(SmfUtils smfutil) {
-	DefaultListModel model = new DefaultListModel();
+	DefaultListModel<SmfService> model = new DefaultListModel<SmfService>();
 	for (SmfService svc : smfutil.getServices()) {
 	    model.addElement(svc);
 	}

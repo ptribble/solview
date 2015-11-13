@@ -30,7 +30,7 @@ import javax.swing.JList;
  * @author Peter Tribble
  * @version 1.0
  */
-public class InfoJList extends JList {
+public class InfoJList extends JList <InfoCommand> {
 
     /**
      * Display a list of commands.
