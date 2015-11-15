@@ -52,7 +52,7 @@ echo "d none /usr/share 0755 ${SYSOWNER}"
 echo "d none /usr/share/solview 0755 ${OWNER}"
 echo "d none /usr/share/man 0755 ${OWNER}"
 echo "f none /usr/share/man/man1/solview.1=man1/solview.1 0644 ${OWNER}"
-echo "f none /usr/share/solview/README=./README 0644 ${OWNER}"
+echo "f none /usr/share/solview/README=./README.md 0644 ${OWNER}"
 
 echo "f none /usr/share/applications/solview.desktop=./solview.desktop 0644 ${OWNER}"
 echo "f none /usr/share/pixmaps/solview.png=./pixmaps/solview.png 0644 ${OWNER}"
