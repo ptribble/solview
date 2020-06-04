@@ -311,7 +311,7 @@ and clusters so everything sorts.
 
 Profile builder now allows recursive removal
 
-Profile parser does a better job of finding the distrubution directory
+Profile parser does a better job of finding the distribution directory
 
 Version 0.51
 
