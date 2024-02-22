@@ -76,7 +76,7 @@ public class SmfUtils {
     /**
      * Get a Set of Strings representing all current status values.
      *
-     * @return a Set of all current statusses
+     * @return a Set of all current statuses
      */
     public Set <String> getStatusses() {
 	return statusMap.keySet();

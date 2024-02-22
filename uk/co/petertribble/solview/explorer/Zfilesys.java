@@ -83,7 +83,7 @@ public class Zfilesys {
     /**
      * Return the entire property map.
      *
-     * @return a Map containg the properties of this Zfilesys
+     * @return a Map containing the properties of this Zfilesys
      */
     public Map <String, String> getProperties() {
 	if (!readprops) {
@@ -146,7 +146,7 @@ public class Zfilesys {
     /**
      * Return the String representation of this ZFS filesystem, its name.
      *
-     * @return the name of ths dataset
+     * @return the name of this dataset
      */
     @Override
     public String toString() {

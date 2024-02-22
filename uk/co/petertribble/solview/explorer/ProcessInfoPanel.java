@@ -59,7 +59,7 @@ public class ProcessInfoPanel extends InfoPanel {
     }
 
     /*
-     * Top level summary. List of Processs.
+     * Top level summary. List of Processes.
      */
     private void displaySummary() {
 	jvp.add(new JLabel("Running Processes"));

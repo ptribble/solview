@@ -116,7 +116,7 @@ public class SolView extends JFrame implements ActionListener {
     }
 
     /**
-     * Craete a new solview application from the command line.
+     * Create a new solview application from the command line.
      *
      * @param args command line arguments, ignored
      */

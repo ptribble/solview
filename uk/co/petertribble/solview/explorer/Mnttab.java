@@ -176,7 +176,7 @@ public class Mnttab {
      *
      * @param fs The filesystem of interest
      *
-     * @return Whether the given filesystem has te ignore flga set
+     * @return Whether the given filesystem has the ignore flag set
      */
     public boolean getIgnore(String fs) {
 	List <String> v = optmap.get(fs);
