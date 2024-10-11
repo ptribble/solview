@@ -1,3 +1,7 @@
+Tidied up. There will be no further development of this version. Note that
+this version is aimed at Solaris 10, for newer systems take a look at my
+illuminate application.
+
 From 1.1 to 1.2
 
 ClassCast exception in CpuInfoPanel

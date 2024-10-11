@@ -3,17 +3,14 @@
 # build solview
 #
 
-SVDIR=`dirname $0`
+SVDIR=`dirname "$0"`
 LIBDIR=${SVDIR}/lib
 JARLIBDIR=${LIBDIR}/java
-JAVA=java
 
 XFLAGS="-Xlint -Xlint:-serial"
 
 
 SVJAR=${JARLIBDIR}/solview.jar
-JCJAR=${JARLIBDIR}/jcommon-1.0.21.jar
-JFJAR=${JARLIBDIR}/jfreechart-1.0.17.jar
 JINGLEJAR=${JARLIBDIR}/jingle.jar
 JUMBLEJAR=${JARLIBDIR}/jumble.jar
 JKJAR=${JARLIBDIR}/jkstat.jar
@@ -37,10 +34,10 @@ case $# in
 	if [ -x /opt/onbld/bin/jstyle ]; then
 	    /opt/onbld/bin/jstyle `find uk/co/petertribble -name '*.java'`
 	fi
-	javac ${XFLAGS} -classpath .:${BUILDJARS} `find uk/co/petertribble -name '*.java'`
-	jar -cmf solview.manifest ${SVJAR} images/*.png pixmaps/* properties/*.properties help/*.html help/CDDL.txt `find uk/co -name '*.class'`
-	cp ${SVJAR} jsp/WEB-INF/lib
-	cp ${JUMBLEJAR} jsp/WEB-INF/lib
+	javac ${XFLAGS} -classpath .:"${BUILDJARS}" `find uk/co/petertribble -name '*.java'`
+	jar -cmf solview.manifest "${SVJAR}" images/*.png pixmaps/* properties/*.properties help/*.html help/CDDL.txt `find uk/co -name '*.class'`
+	cp "${SVJAR}" jsp/WEB-INF/lib
+	cp "${JUMBLEJAR}" jsp/WEB-INF/lib
 	cd jsp
 	jar cf ../solview.war *
 	cd ..

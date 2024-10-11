@@ -3,7 +3,7 @@
 # run solview
 #
 
-SVDIR=`dirname $0`
+SVDIR=`dirname "$0"`
 LIBDIR=${SVDIR}/lib
 ARCHLIBDIR=${LIBDIR}/`/usr/bin/uname -p`
 ARCHLIBDIR_32=${LIBDIR}/`/usr/bin/uname -p`
@@ -32,16 +32,6 @@ if [ -f "${ARCHLIBDIR_64}/libproc_jni.so" ]; then
     fi
 fi
 
-#
-# need to give java more memory to handle contents file parsing
-#
-case $# in
-0)
-	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -jar ${JARLIBDIR}/solview.jar
-	exit 0
-	;;
-esac
-
 SVJAR=${JARLIBDIR}/solview.jar
 JCJAR=${JARLIBDIR}/jcommon-1.0.21.jar
 JFJAR=${JARLIBDIR}/jfreechart-1.0.17.jar
@@ -50,41 +40,51 @@ JUMBLEJAR=${JARLIBDIR}/jumble.jar
 JKJAR=${JARLIBDIR}/jkstat.jar
 JPJAR=${JARLIBDIR}/jproc.jar
 
+#
+# need to give java more memory to handle contents file parsing
+#
+case $# in
+0)
+	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -jar "${SVJAR}"
+	exit 0
+	;;
+esac
+
 BASEJARS=${SVJAR}:${JINGLEJAR}:${JUMBLEJAR}
-ALLJARS=${JCJAR}:${JFJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JKJAR}:${JPJAR}
+ALLJARS=${SVJAR}:${JCJAR}:${JFJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JKJAR}:${JPJAR}
 
 case $1 in
 
 services)
 	shift
-	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -cp ${BASEJARS} uk.co.petertribble.solview.MultiView services
+	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -cp "${BASEJARS}" uk.co.petertribble.solview.MultiView services
 	exit 0
 	;;
 
 explorer)
 	shift
-	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -cp ${SVJAR}:${ALLJARS} uk.co.petertribble.solview.MultiView explorer
+	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -cp "${ALLJARS}" uk.co.petertribble.solview.MultiView explorer
 	exit 0
 	;;
 
 information)
 	shift
-	$JAVA -cp ${BASEJARS} uk.co.petertribble.solview.MultiView information
+	$JAVA -cp "${BASEJARS}" uk.co.petertribble.solview.MultiView information
 	exit 0
 	;;
 
 cpustate)
-    LD_LIBRARY_PATH=${ARCHLIBDIR_32} $JAVA -cp ${SVJAR}:${ALLJARS} uk.co.petertribble.solview.explorer.JCpuState $*
+    LD_LIBRARY_PATH=${ARCHLIBDIR_32} $JAVA -cp "${ALLJARS}" uk.co.petertribble.solview.explorer.JCpuState "$@"
     exit 0
     ;;
 
 fsstat)
-    LD_LIBRARY_PATH=${ARCHLIBDIR_32} $JAVA -cp ${SVJAR}:${ALLJARS} uk.co.petertribble.solview.explorer.JFSstat
+    LD_LIBRARY_PATH=${ARCHLIBDIR_32} $JAVA -cp "${ALLJARS}" uk.co.petertribble.solview.explorer.JFSstat
     exit 0
     ;;
 
 arcstat)
-    LD_LIBRARY_PATH=${ARCHLIBDIR_32} $JAVA -cp ${SVJAR}:${ALLJARS} uk.co.petertribble.solview.explorer.ArcStat
+    LD_LIBRARY_PATH=${ARCHLIBDIR_32} $JAVA -cp "${ALLJARS}" uk.co.petertribble.solview.explorer.ArcStat
     exit 0
     ;;
 
